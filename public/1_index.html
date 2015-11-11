@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="MyApp">
+	<head>
+		<title></title>
+		<meta charset="UTF-8">
+	</head>
+	<body>
+		<div ng-init="tareas = []"></div>
+		
+
+		<input type="text" ng-model="nuevaTarea"/>
+		<button ng-click="tareas.push(nuevaTarea)">Añadir Tarea</button>
+		<input type="text" ng-model="data"/>
+		<button ng-click="data = 'Hola Mundo'">liala pixa</button>
+		{{data}}
+
+		<ul>
+			<li ng-repeat="tarea in tareas">
+				{{tarea}} - {{$index}}
+			</li>
+		</ul>
+
+		<h1>{{select = 'Coruña'}}</h1>
+		<select ng-model="select">
+			<option value="Coruña">Coruña</option>
+			<option value="Madrid">Madrid</option>
+			<option value="Barcelona">Barcelona</option>
+			<option value="Burgos">Burgos</option>
+			<option value="Caceres">Caceres</option>
+			<option value="Bilbao">Bilbao</option>
+			<option value="Cuenca">Cuenca</option>
+		</select>
+		<br/>
+
+		<div ng-controller="controller as ctrl">
+			<h2>Contador: {{contador}}</h2>
+			<input type="text" ng-model="contador">
+			<button ng-click="ctrl.sumar()">Sumar</button>
+			<button ng-click="ctrl.restar()">Restar</button>
+		</div>
+		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.1/angular.min.js"></script>
+		<script type="text/javascript" src="script/main.js"></script>
+	</body>
+</html>

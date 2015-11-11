@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app="Agenda">
+	<head>
+		<title></title>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">
+		<link rel="stylesheet" href="styles/main.css">
+	</head>
+	<body class="container">
+		<div ng-controller="controller">
+			<h2>Agenda</h2>
+			
+			<ul>
+				<li ng-repeat="contact in contacts">
+					<hr ng-if="$first"/>
+					{{contact.name}} - {{contact.tel}} - {{contact.dir}}
+					<button class="right" type="button" ng-click="remove($index)">Eliminar</button>
+					<hr/>
+				</li>
+			</ul>
+
+			<div ng-hide="showForm">
+				<button class="right" ng-click="toggleForm()">Añadir Contacto</button>
+			</div>
+
+			<div style="margin-top:20px;" ng-show="showForm">
+				<form ng-submit="saveContact()" name="myForm">
+					<label>Nombre</label><input type="text" name="name" ng-model="contact.name" ng-minlength="3">
+					<br/>
+					<label>Telefono</label><input type="text" name="tel" ng-model="contact.tel">
+					<br/>
+					<label>Dirección</label><input type="text" name="dir" ng-model="contact.dir">
+					<button class="left" type="button" ng-click="toggleForm()">Cancelar</button>
+					<button class="right" type="submit">Agregar</button>
+				</form>
+			</div>
+
+		</div>
+		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.1/angular.min.js"></script>
+	
+		
+		<script type="text/javascript" src="script/app.js"></script>
+		<script type="text/javascript" src="script/contacto.controller.js"></script>
+		<script type="text/javascript" src="script/storage.service.js"></script>
+	</body>
+</html>
